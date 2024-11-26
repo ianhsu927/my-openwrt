@@ -1,5 +1,10 @@
 # Mac 编译 ImmortalWrt
 
+## 设备
+
+- MacBook Pro 14 M1 Pro 16GB
+- Mac mini M4 16GB
+
 macOS 下编译 OpenWRT 失败,偶然看到 hanwckf 的 [Mac mini 2024 (Apple M4) openwrt 编译测试](https://cmi.hanwckf.top/p/mac-mini-m4-openwrt-build-test/)启发,使用 [OrbStack](https://orbstack.dev) 搭建虚拟环境，编译成功。
 
 OrbStack 能图形化配置虚拟机和 Docker 环境，非常方便。
@@ -36,6 +41,16 @@ make defconfig # 默认配置
 
 make V=s download -j10
 make V=s -j10
+```
+
+### TTL
+
+我使用的 USB 转串口芯片是 CP2102
+[CP2102 驱动](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads)
+
+```bash
+brew install minicom
+minicom -D /dev/cu.SLAB_USBtoUART -b 115200
 ```
 
 ### 一些出错情况
